@@ -1,8 +1,11 @@
+import moment from "moment";
+
+// Only show expenses for the current month and sorted by date, initially
 const filtersDefaultState = {
   text: "",
   sortBy: "date", // date or amount
-  startDate: undefined,
-  endDate: undefined,
+  startDate: moment().startOf("month"),
+  endDate: moment().endOf("month"),
 };
 
 export default (state = filtersDefaultState, action) => {
