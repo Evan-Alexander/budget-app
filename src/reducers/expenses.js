@@ -10,11 +10,11 @@ export default (state = expensesDefaultState, action) => {
       return state.map((expense) => {
         if (expense.id === action.id) {
           return {
-            // return all of existing expense
             ...expense,
-            // will override any changes to that expense
-            ...action.expense,
+            ...action.updates,
           };
+        } else {
+          return expense;
         }
       });
     default:
