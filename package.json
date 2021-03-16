@@ -8,7 +8,7 @@
     "serve": "live-server public/",
     "build": "webpack",
     "dev-server": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest --config=jest.config.json"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
@@ -20,6 +20,7 @@
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "normalize.css": "7.0.0",
+    "raf": "^3.4.1",
     "react": "^16.14.0",
     "react-addons-shallow-compare": "^15.6.3",
     "react-dates": "^21.8.0",
@@ -44,6 +45,9 @@
     "@babel/plugin-transform-runtime": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
     "@babel/preset-react": "^7.12.13",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
     "webpack": "^3.1.0"
   }
 }
