@@ -15,12 +15,9 @@ export const startAddExpense = (expenseData = {}) => {
       amount = 0,
       createdAt = 0,
     } = expenseData;
-    console.log("first: expenseData: ", expenseData);
     const expense = { description, note, amount, createdAt };
-    console.log("second: expenseData: ", expenseData);
-    console.log("expense: ", expense);
 
-    database
+    return database
       .ref("expenses")
       .push(expense)
       .then((ref) => {
