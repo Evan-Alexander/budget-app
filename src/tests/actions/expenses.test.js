@@ -5,11 +5,24 @@ import {
   addExpense,
   editExpense,
   removeExpense,
+  setExpenses,
+  startSetExpenses,
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import database from "../../firebase/firebase";
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach((done) => {
+  const expenseData = {};
+  expenses.forEach(({ id, description, note, amount, createdAt }) => {
+    expenseData[id] = { description, note, amount, createdAt };
+  });
+  database
+    .ref("expenses")
+    .set(expenseData)
+    .then(() => done());
+});
 // toEqual => great for comparing objects
 // expect.any(String), Great for asserting a TYPE of a value when you don't know what the value will be.
 
@@ -73,7 +86,7 @@ test("Should add expense to database and store", (done) => {
       done();
     });
 });
-test("Should add expense with defaults to database and store", () => {
+test("Should add expense with defaults to database and store", (done) => {
   const store = createMockStore({});
   const expenseDefaults = {
     description: "",
@@ -100,6 +113,25 @@ test("Should add expense with defaults to database and store", () => {
     });
 });
 
+test("Should setup set expense action object with data", () => {
+  const action = setExpenses(expenses);
+  expect(action).toEqual({
+    type: "SET_EXPENSES",
+    expenses,
+  });
+});
+
+test("should fetch the expenses from firebase", (done) => {
+  const store = createMockStore({});
+  store.dispatch(startSetExpenses()).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: "SET_EXPENSES",
+      expenses,
+    });
+    done();
+  });
+});
 // BEFORE ASYNC DB STORAGE
 // test("Should setup add expense action object with DEFAULT values", () => {
 //   const action = addExpense();
