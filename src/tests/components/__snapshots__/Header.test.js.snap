@@ -35,7 +35,9 @@ exports[`Should render Header correctly 1`] = `
   <div>
     <button
       onClick={[Function]}
-    />
+    >
+      Logout
+    </button>
   </div>
 </header>
 `;
