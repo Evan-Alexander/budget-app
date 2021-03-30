@@ -1,0 +1,40 @@
+.box-layout {
+  background: url("/images/bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-layout__box {
+  padding: $l-size $m-size;
+  background-color: azure;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.login-button {
+  width: 250px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+  .g-logo {
+    align-self: flex-start;
+    background: url("/images/gaggle.png");
+    background-size: contain;
+    margin-right: 5px;
+    width: 45px;
+    height: 45px;
+  }
+}
